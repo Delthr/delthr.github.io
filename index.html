@@ -22,15 +22,16 @@
 
         /* Header */
         header { text-align: center; margin-bottom: 60px; }
-        h1 { font-size: 3rem; margin-bottom: 10px; }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; }
         .subtitle { color: var(--accent-color); font-size: 1.2rem; font-weight: 500; margin-bottom: 20px; }
         .links { display: flex; justify-content: center; gap: 20px; }
-        .links a { color: var(--text-primary); text-decoration: none; font-size: 1.5rem; transition: 0.3s; }
+        .links a { color: var(--text-primary); text-decoration: none; font-size: 1.8rem; transition: 0.3s; }
         .links a:hover { color: var(--accent-color); transform: translateY(-3px); }
 
         /* Sections */
-        section { margin-bottom: 50px; }
-        h2 { font-size: 1.8rem; margin-bottom: 20px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+        section { margin-bottom: 60px; }
+        h2 { font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 1px; background: #334155; flex-grow: 1; }
 
         /* Skills/Tags */
         .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -50,26 +51,68 @@
             color: var(--accent-color); text-transform: uppercase;
         }
 
+        /* --- Featured Project (Improved Styles) --- */
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .project-header h3 { font-size: 1.4rem; color: var(--text-primary); }
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .tech-badge {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .challenge-box {
+            background: rgba(15, 23, 42, 0.4);
+            padding: 1.2rem;
+            border-left: 4px solid var(--accent-color);
+            margin: 1.5rem 0;
+        }
+        .challenge-box strong { display: block; margin-bottom: 8px; color: var(--accent-color); }
+        .challenge-box li { margin-bottom: 5px; font-size: 0.95rem; list-style: none; position: relative; padding-left: 15px; }
+        .challenge-box li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-color); }
+
         /* Modal Styles */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; 
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px); align-items: center; justify-content: center;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(6px); align-items: center; justify-content: center;
         }
         .modal-content {
-            background: var(--card-bg); padding: 30px; border-radius: 15px; 
-            max-width: 500px; width: 90%; border: 1px solid var(--accent-color);
+            background: var(--card-bg); padding: 35px; border-radius: 15px; 
+            max-width: 550px; width: 90%; border: 1px solid var(--accent-color);
             position: relative; animation: slideIn 0.3s ease-out;
         }
         @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary); }
-        .modal-title { color: var(--accent-color); margin-bottom: 15px; font-size: 1.4rem; }
+        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-secondary); }
+        .modal-title { color: var(--accent-color); margin-bottom: 15px; font-size: 1.6rem; border-bottom: 1px solid #334155; padding-bottom: 10px; }
         .modal-body { font-size: 1rem; color: var(--text-primary); }
-        .modal-body ul { margin-left: 20px; margin-top: 10px; }
+        .modal-body ul { margin-left: 5px; margin-top: 10px; list-style: none; }
+        .modal-body li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .modal-body li::before { content: "→"; position: absolute; left: 0; color: var(--accent-color); }
 
-        /* About & Project */
-        .card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid #334155; }
-        strong { color: var(--accent-color); }
+        /* About Card */
+        .about-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid #334155; }
+        .highlight { color: var(--accent-color); font-weight: bold; }
+
+        footer { text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid #334155; }
     </style>
 </head>
 <body>
@@ -86,8 +129,8 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <div class="card">
-            <p>Originally trained in IT and Network Administration, I spent a significant part of my professional life as a Sound & Lighting Technician. When the pandemic impacted the event industry, I decided to return to my true passion: <strong>Backend Development</strong>.</p>
+        <div class="about-card">
+            <p>Originally trained in IT and Network Administration, I spent a significant part of my professional life as a Sound & Lighting Technician. When the pandemic impacted the event industry, I decided to return to my original passion: <span class="highlight">Backend Development</span>.</p>
             <br>
             <p>This journey has made me a highly determined and fast-learning engineer. I combine my structural knowledge of networks with modern Java architectures to build scalable and secure applications.</p>
         </div>
@@ -95,7 +138,7 @@
 
     <section id="skills">
         <h2>Technical Stack</h2>
-        <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-secondary);">Click on tags with dashed borders to see how I used them:</p>
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-secondary);"><i class="fas fa-mouse-pointer"></i> Click tags with dashed borders for technical details:</p>
         <div class="skills-grid">
             <div class="skill-tag">Java 21</div>
             <div class="skill-tag">Spring Boot</div>
@@ -113,17 +156,43 @@
     </section>
 
     <section id="project">
-        <h2>Featured Project: Telegram Clone</h2>
-        <div class="card">
-            <h3>Event-Driven Chat Application</h3>
-            <p style="margin-top: 10px;">A full-scale messaging platform focused on real-time communication and security. Developed in just <strong>4.5 weeks</strong>, showcasing my ability to handle rapid refactoring and complex architecture.</p>
-            <ul style="margin-left: 20px; margin-top: 15px;">
-                <li>Redesigned service layers for <strong>React Native</strong> integration.</li>
-                <li>Implemented <strong>Zero-Trust</strong> security principles.</li>
-                <li>Built for high-throughput messaging.</li>
-            </ul>
+        <h2>Featured Project</h2>
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Telegram Clone (Real-Time Chat)</h3>
+                <a href="https://github.com/ec-mentors/project-module-Delthr/" target="_blank" style="color: var(--accent-color); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
+            </div>
+            <p>A full-stack, event-driven messaging platform focused on high-performance backend and secure data flow.</p>
+            
+            <div class="project-tech">
+                <span class="tech-badge">Java 21</span>
+                <span class="tech-badge">Spring Boot</span>
+                <span class="tech-badge">Apache Kafka</span>
+                <span class="tech-badge">WebSockets</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">React Native</span>
+            </div>
+
+            <div class="challenge-box">
+                <strong>Key Engineering Challenges:</strong>
+                <ul>
+                    <li><strong>Refactoring for Frontend:</strong> Redesigned service layers and REST endpoints to ensure seamless integration with React Native.</li>
+                    <li><strong>Real-time Messaging:</strong> Implemented WebSockets (STOMP) for instant delivery without polling.</li>
+                    <li><strong>Architectural Choice:</strong> Used Apache Kafka for asynchronous stream processing to ensure scalability.</li>
+                    <li><strong>Security:</strong> Implemented JWT authentication and End-to-End Encryption (E2EE) principles.</li>
+                </ul>
+            </div>
+            <p style="font-style: italic; font-size: 0.9rem; color: var(--text-secondary);">
+                "Completed the entire MVP in 4.5 weeks, demonstrating rapid learning and high persistence."
+            </p>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2024 Adam Miasko. Built for Performance.</p>
+    </footer>
 </div>
 
 <!-- Modal Structure -->
@@ -139,15 +208,15 @@
     const techData = {
         kafka: {
             title: "Apache Kafka",
-            text: "I used Kafka for seamless message and event streaming between different application modules:<ul><li><strong>Service Decoupling:</strong> Senders push messages to Kafka without waiting for the receiver, ensuring a non-blocking flow.</li><li><strong>High Performance:</strong> Capable of handling massive message volumes without degrading application speed.</li><li><strong>Persistence & Safety:</strong> Messages are stored; if a service fails, it can consume missed data upon restart.</li></ul>"
+            text: "Used for seamless event streaming between application modules:<ul><li><strong>Service Decoupling:</strong> Senders push messages to Kafka without waiting for the receiver, ensuring a non-blocking flow.</li><li><strong>High Performance:</strong> Capable of handling massive message volumes without degrading application speed.</li><li><strong>Persistence & Safety:</strong> Messages are stored securely; if a service fails, it resumes consumption from the last offset upon restart.</li></ul>"
         },
         websockets: {
             title: "WebSockets (STOMP)",
-            text: "Crucial for features requiring instant updates like live chat and notifications:<ul><li><strong>Full-Duplex:</strong> Simultaneous two-way communication between client and server.</li><li><strong>Server Push:</strong> The server 'pushes' new data to the client immediately—no more inefficient HTTP polling.</li><li><strong>Low Overhead:</strong> Reduces CPU and data usage by maintaining a single, persistent connection.</li></ul>"
+            text: "Critical for features requiring instant updates:<ul><li><strong>Full-Duplex:</strong> Simultaneous two-way communication between client and server.</li><li><strong>Server Push:</strong> The server 'pushes' new data to the client immediately—eliminating inefficient HTTP polling.</li><li><strong>Efficiency:</strong> Maintains a single, persistent connection, drastically saving CPU and transfer.</li></ul>"
         },
         e2ee: {
             title: "End-to-End Encryption (E2EE)",
-            text: "Implemented hybrid envelope encryption for maximum security:<ul><li><strong>X25519 (ECDH):</strong> Used for secure key exchange between users.</li><li><strong>AES-256-GCM:</strong> Used for actual data encryption.</li><li><strong>Zero-Trust Architecture:</strong> Ensures full confidentiality and message authenticity even if the server is compromised.</li></ul>"
+            text: "Implemented hybrid encryption for maximum privacy:<ul><li><strong>X25519 (ECDH):</strong> Used for secure key exchange between users.</li><li><strong>AES-256-GCM:</strong> Used for high-speed data encryption with authenticity checks.</li><li><strong>Zero-Trust:</strong> Ensures message confidentiality even if the server infrastructure is compromised.</li></ul>"
         }
     };
 
@@ -155,10 +224,8 @@
         const modal = document.getElementById('techModal');
         const title = document.getElementById('modalTitle');
         const body = document.getElementById('modalBody');
-        
         title.innerText = techData[tech].title;
         body.innerHTML = techData[tech].text;
-        
         modal.style.display = 'flex';
     }
 
@@ -166,12 +233,9 @@
         document.getElementById('techModal').style.display = 'none';
     }
 
-    // Close on outside click
     window.onclick = function(event) {
         const modal = document.getElementById('techModal');
-        if (event.target == modal) {
-            closeModal();
-        }
+        if (event.target == modal) closeModal();
     }
 </script>
 
